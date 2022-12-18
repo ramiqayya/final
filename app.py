@@ -1,7 +1,13 @@
 from flask import Flask, render_template, url_for
+from cs50 import SQL
+from flask_sqlalchemy import SQLAlchemy
+
+
+
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///project.db'
+db=SQLAlchemy(app)
 
 @app.route('/')
 def index():
