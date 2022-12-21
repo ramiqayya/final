@@ -1,10 +1,11 @@
 import os
 from flask import Flask,redirect, render_template, url_for,request,session
 # from flask_session import Session
-# from cs50 import SQL
+from cs50 import SQL
 from tempfile import mkdtemp
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from helpers import apology, login_required, lookup, usd
 
 
 
@@ -14,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///project.db'
 with app.app_context():
     db=SQLAlchemy(app)
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-# app.jinja_env.filters["usd"] = usd
+app.jinja_env.filters["usd"] = usd
 # app.config["SESSION_PERMANENT"]=False
 # app.config["SESSION_TYPE"]="filesystem"
 # Session(app)
